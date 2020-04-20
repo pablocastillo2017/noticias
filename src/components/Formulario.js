@@ -12,11 +12,12 @@ const Formulario = ({ guardarCategoria }) => {
     { value: "sports", label: "Deportes" },
     { value: "technology", label: "Tecnología" },
   ];
-  //Urilizar el CUSTOM HOOK
-  const [categoria, SelectNoticias] = useSelect("General", OPCIONES);
 
-  // submit al form , pasar categoria a App.js
-  const buscadorNoticias = (e) => {
+  // utilizar custom hook
+  const [categoria, SelectNoticias] = useSelect("general", OPCIONES);
+
+  // submit al form, pasar categoria a app.js
+  const buscarNoticias = (e) => {
     e.preventDefault();
 
     guardarCategoria(categoria);
@@ -25,10 +26,11 @@ const Formulario = ({ guardarCategoria }) => {
   return (
     <div className={`${styles.buscador} row`}>
       <div className="col s12 m8 offset-m2">
-        <form onSubmit={buscadorNoticias}>
+        <form onSubmit={buscarNoticias}>
           <h2 className={styles.heading}>Encuentra Noticias por Categoría</h2>
 
           <SelectNoticias />
+
           <div className="input-field col s12">
             <input
               type="submit"
